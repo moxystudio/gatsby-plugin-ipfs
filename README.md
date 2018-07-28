@@ -12,7 +12,7 @@
 [greenkeeper-image]:https://badges.greenkeeper.io/moxystudio/gatsby-plugin-ipfs.svg
 [greenkeeper-url]:https://greenkeeper.io
 
-Adds support for deploying Gatsby to IPFS by ensuring that assets are relative.
+Adds support for deploying [Gatsby](https://www.gatsbyjs.org/) websites to [IPFS](https://ipfs.io/) by ensuring that assets are relative.
 
 
 ## Installation
