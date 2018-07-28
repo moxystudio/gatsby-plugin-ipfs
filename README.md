@@ -38,7 +38,9 @@ module.exports = {
 And now, simply build the project with `npm run build -- --prefix-paths`.
 
 
-## How
+## But how?
+
+It turns out the Gatsby doesn't support relative paths. But I didn't gave up and came up with smart and ugly hacks to do so:
 
 - Adds a postbuild step that iterates over html & assets files and transforms absolute to relative paths
 - Sets up the [`<base>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base) tag to be `/ipfs/xxxx` or `/ipns/xxxx` according to the `window.location` so that relative paths work correctly
