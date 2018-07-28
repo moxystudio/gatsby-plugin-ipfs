@@ -18,7 +18,7 @@ Adds support for deploying Gatsby to IPFS by ensuring that assets are relative.
 ## Installation
 
 ```sh
-$ npm install --save-dev gatsby-plugin-ipfs
+$ npm install --save gatsby-plugin-ipfs
 ```
 
 
