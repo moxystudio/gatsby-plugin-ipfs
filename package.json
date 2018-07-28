@@ -1,0 +1,69 @@
+{
+  "name": "gatsby-plugin-ipfs",
+  "description": "Adds support for deploying Gatsby to IPFS by ensuring that assets are relative",
+  "version": "0.0.1",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "ipfs",
+    "ipns",
+    "relative"
+  ],
+  "author": "André Cruz <andre@moxy.studio>",
+  "homepage": "https://github.com/moxystudio/gatsby-pljugin-ipfs",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:moxystudio/gatsby-plugin-ipfs.git"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "gatsby-browser.js",
+    "gatsby-node.js"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir .",
+    "lint": "eslint .",
+    "prerelease": "npm run lint && npm run build",
+    "release": "standard-version",
+    "precommit": "lint-staged",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
+  },
+  "standard-version": {
+    "scripts": {
+      "posttag": "git push --follow-tags origin master && npm publish"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --ignore-pattern test/fixtures",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "dependencies": {
+    "globby": "^8.0.1",
+    "history": "^4.7.2"
+  },
+  "peerDependencies": {
+    "gatsby": "^1.9.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^4.19.1",
+    "eslint-config-moxy": "^5.5.3",
+    "husky": "^0.14.0",
+    "lint-staged": "^7.2.0",
+    "standard-version": "^4.4.0"
+  }
+}

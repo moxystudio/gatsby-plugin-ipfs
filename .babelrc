@@ -1,0 +1,20 @@
+// Based on https://github.com/gatsbyjs/gatsby/blob/v1.6.3/.babelrc
+{
+  "sourceMaps": true,
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": 4.0,
+          "uglify": true,
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    "transform-runtime",
+    "transform-object-rest-spread",
+    "transform-async-to-generator"
+  ]
+}

@@ -1,0 +1,5 @@
+node_modules/
+npm-debug.*
+coverage/
+/gatsby-node.js
+/gatsby-browser.js
