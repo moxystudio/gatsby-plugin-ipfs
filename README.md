@@ -46,14 +46,6 @@ And now, simply build the project with `npm run build -- --prefix-paths`.
 - Adds runtime code that wraps the Gatsby's loader `getResourcesForPathname` to exclude `/ipfs/xxxx` or `/ipns/xxxx` from `paths`
 
 
-## Tests
-
-```sh
-$ npm test
-$ npm test -- --watch # during development
-```
-
-
 ## License
 
 [MIT License](http://opensource.org/licenses/MIT)
