@@ -3,8 +3,8 @@
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url] [![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
 
 [npm-url]:https://npmjs.org/package/gatsby-plugin-ipfs
-[npm-image]:http://img.shields.io/npm/v/gatsby-plugin-ipfs.svg
-[downloads-image]:http://img.shields.io/npm/dm/gatsby-plugin-ipfs.svg
+[npm-image]:https://img.shields.io/npm/v/gatsby-plugin-ipfs.svg
+[downloads-image]:https://img.shields.io/npm/dm/gatsby-plugin-ipfs.svg
 [david-dm-url]:https://david-dm.org/moxystudio/gatsby-plugin-ipfs
 [david-dm-image]:https://img.shields.io/david/moxystudio/gatsby-plugin-ipfs.svg
 [david-dm-dev-url]:https://david-dm.org/moxystudio/gatsby-plugin-ipfs?type=dev
