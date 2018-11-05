@@ -24,28 +24,32 @@ $ npm install --save gatsby-plugin-ipfs
 
 ## Usage
 
-Set `prefixPath` to `.` and include the plugin in your `gatsby-config.js` file:
+Set `prefixPath` to `__GATSBY_IPFS_PATH_PREFIX__` and include the plugin in your `gatsby-config.js` file:
 
 ```js
 module.exports = {
-    pathPrefix: '.',
+    pathPrefix: '__GATSBY_IPFS_PATH_PREFIX__',
     plugins: [
         'gatsby-plugin-ipfs',
     ]
 }
 ```
 
-And now, simply build the project with `npm run build -- --prefix-paths`.
+And now, simply build the project with `npm run build -- --prefix-paths`. Better yet, set it by default in your `package.json`:
+
+```json
+"scripts": {
+  "build": "gatsby build --prefix-paths"
+},
+```
 
 
 ## But how?
 
 It turns out the Gatsby doesn't support relative paths. But I didn't gave up and came up with smart and ugly hacks to do so:
 
-- Adds a postbuild step that iterates over html & assets files and transforms absolute to relative paths
-- Sets up the [`<base>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base) tag to be `/ipfs/xxxx` or `/ipns/xxxx` according to the `window.location` so that relative paths work correctly
-- Adds runtime code that sets `basename` of the [`history`](https://github.com/ReactTraining/history) to `/ipfs/xxxx/` or `/ipns/xxxx/` according to the `window.location`
-- Adds runtime code that wraps the Gatsby's loader `getResourcesForPathname` to exclude `/ipfs/xxxx` or `/ipns/xxxx` from `paths`
+- Adds a post-build step that iterates over files and transforms every `__GATSBY_IPFS_PATH_PREFIX__` occurrence
+- Adds a very minimal runtime code to every page that defines `__GATSBY_IPFS_PATH_PREFIX__` globally based on the browser location
 
 
 ## License
