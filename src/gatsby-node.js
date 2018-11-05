@@ -111,6 +111,20 @@ const injectScriptInHtmlFiles = async () => {
     }, { concurrency: TRANSFORM_CONCURRENCY });
 };
 
+exports.onPreBootstrap = ({ store, reporter }) => {
+    const { config, program } = store.getState();
+
+    if (!/\/?__GATSBY_IPFS_PATH_PREFIX__/.test(config.pathPrefix)) {
+        throw new Error('The pathPrefix must be set to __GATSBY_IPFS_PATH_PREFIX__');
+    }
+
+    if (!program.prefixPaths) {
+        reporter.warn('The gatsby-plugin-ipfs won\'t work correctly unless you build with --prefix-paths');
+    } else if (!/\/?__GATSBY_IPFS_PATH_PREFIX__/.test(config.pathPrefix)) {
+        reporter.panick('The pathPrefix must be set to __GATSBY_IPFS_PATH_PREFIX__');
+    }
+};
+
 exports.onPostBuild = async () => {
     // Relativize all occurrences of __GATSBY_IPFS_PATH_PREFIX__ within the built files
     await relativizeHtmlFiles();
