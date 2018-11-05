@@ -1,0 +1,7 @@
+{
+    "root": true,
+    "extends": [
+        "eslint-config-moxy/es5",
+        "eslint-config-moxy/addons/browser"
+    ]
+}

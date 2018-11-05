@@ -18,16 +18,21 @@
   "license": "MIT",
   "files": [
     "index.js",
-    "gatsby-browser.js",
-    "gatsby-node.js"
+    "gatsby-node.js",
+    "runtime"
   ],
   "scripts": {
     "build": "babel src --out-dir .",
-    "lint": "eslint .",
+    "postbuild": "uglifyjs runtime/head-script.js --compress --mangle -o runtime/head-script.js",
+    "lint": "eslint . --ignore-path .gitignore",
     "prerelease": "npm run lint && npm run build",
-    "release": "standard-version",
-    "precommit": "lint-staged",
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+    "release": "standard-version"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
   },
   "standard-version": {
     "scripts": {
@@ -47,23 +52,23 @@
   },
   "dependencies": {
     "globby": "^8.0.1",
-    "history": "^4.7.2"
+    "is-text-path": "^1.0.1",
+    "p-map": "^2.0.0"
   },
   "peerDependencies": {
-    "gatsby": "^1.9.0"
+    "gatsby": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.0",
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
+    "babel-preset-gatsby-package": "^0.1.2",
     "eslint": "^5.3.0",
     "eslint-config-moxy": "^6.0.1",
-    "husky": "^0.14.0",
+    "husky": "^1.1.3",
     "lint-staged": "^8.0.0",
-    "standard-version": "^4.4.0"
+    "standard-version": "^4.4.0",
+    "uglify-js": "^3.4.9"
   }
 }
