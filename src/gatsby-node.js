@@ -119,13 +119,11 @@ exports.onPreBootstrap = ({ store, reporter }) => {
     const { config, program } = store.getState();
 
     if (!/\/?__GATSBY_IPFS_PATH_PREFIX__/.test(config.pathPrefix)) {
-        throw new Error('The pathPrefix must be set to __GATSBY_IPFS_PATH_PREFIX__');
+        reporter.panic('The pathPrefix must be set to __GATSBY_IPFS_PATH_PREFIX__ in your gatsby-config.js file');
     }
 
-    if (!program.prefixPaths) {
-        reporter.warn('The gatsby-plugin-ipfs won\'t work correctly unless you build with --prefix-paths');
-    } else if (!/\/?__GATSBY_IPFS_PATH_PREFIX__/.test(config.pathPrefix)) {
-        reporter.panick('The pathPrefix must be set to __GATSBY_IPFS_PATH_PREFIX__');
+    if (program._[0] === 'build' && !program.prefixPaths) {
+        reporter.panic('You forgot --prefix-paths when running the build command');
     }
 };
 
