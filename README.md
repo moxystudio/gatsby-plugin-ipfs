@@ -49,7 +49,7 @@ And now, simply build the project with `npm run build -- --prefix-paths`. Better
 It turns out the Gatsby doesn't support relative paths. But I didn't gave up and came up with smart and ugly hacks to do so:
 
 - Adds a post-build step that iterates over files and transforms every `__GATSBY_IPFS_PATH_PREFIX__` occurrence
-- Adds a very minimal runtime code to every page that defines `__GATSBY_IPFS_PATH_PREFIX__` globally based on the browser location
+- Adds a very small code snippet to every HTML page that defines the `__GATSBY_IPFS_PATH_PREFIX__` global based on the browser location
 
 
 ## License
