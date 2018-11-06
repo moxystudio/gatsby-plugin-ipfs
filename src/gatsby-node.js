@@ -29,6 +29,7 @@ const relativizeHtmlFiles = async () => {
         const buffer = await readFileAsync(path);
         let contents = buffer.toString();
 
+        // Skip if there's nothing to do
         if (!contents.includes('__GATSBY_IPFS_PATH_PREFIX__')) {
             return;
         }
@@ -51,6 +52,7 @@ const relativizeJsFiles = async () => {
         const buffer = await readFileAsync(path);
         let contents = buffer.toString();
 
+        // Skip if there's nothing to do
         if (!contents.includes('__GATSBY_IPFS_PATH_PREFIX__')) {
             return;
         }
@@ -72,6 +74,7 @@ const relativizeMiscAssetFiles = async () => {
     const paths = await globby(['public/**/*', '!public/**/*.html', '!public/**/*.js']);
 
     await pMap(paths, async (path) => {
+        // Skip if this is not a text file
         if (!isTextPath(path)) {
             return;
         }
@@ -81,6 +84,7 @@ const relativizeMiscAssetFiles = async () => {
         const buffer = await readFileAsync(path);
         let contents = buffer.toString();
 
+        // Skip if there's nothing to do
         if (!contents.includes('__GATSBY_IPFS_PATH_PREFIX__')) {
             return;
         }
