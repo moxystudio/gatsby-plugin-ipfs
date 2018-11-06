@@ -123,7 +123,7 @@ exports.onPreBootstrap = ({ store, reporter }) => {
     }
 
     if (program._[0] === 'build' && !program.prefixPaths) {
-        reporter.panic('You forgot --prefix-paths when running the build command');
+        reporter.panic('The build command must be run with --prefix-paths');
     }
 };
 
