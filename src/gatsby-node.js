@@ -24,8 +24,6 @@ const relativizeHtmlFiles = async () => {
     const paths = await globby(['public/**/*.html']);
 
     await pMap(paths, async (path) => {
-        const relativePrefix = getRelativePrefix(path);
-
         const buffer = await readFileAsync(path);
         let contents = buffer.toString();
 
@@ -33,6 +31,8 @@ const relativizeHtmlFiles = async () => {
         if (!contents.includes('__GATSBY_IPFS_PATH_PREFIX__')) {
             return;
         }
+
+        const relativePrefix = getRelativePrefix(path);
 
         contents = contents
         .replace(/\/__GATSBY_IPFS_PATH_PREFIX__\//g, () => relativePrefix);
@@ -79,8 +79,6 @@ const relativizeMiscAssetFiles = async () => {
             return;
         }
 
-        const relativePrefix = getRelativePrefix(path);
-
         const buffer = await readFileAsync(path);
         let contents = buffer.toString();
 
@@ -88,6 +86,8 @@ const relativizeMiscAssetFiles = async () => {
         if (!contents.includes('__GATSBY_IPFS_PATH_PREFIX__')) {
             return;
         }
+
+        const relativePrefix = getRelativePrefix(path);
 
         contents = contents
         .replace(/\/__GATSBY_IPFS_PATH_PREFIX__\//g, () => relativePrefix);
