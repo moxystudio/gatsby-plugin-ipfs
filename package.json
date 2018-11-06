@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-ipfs",
   "description": "Adds support for deploying Gatsby to IPFS by ensuring that assets are relative",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "keywords": [
     "gatsby",
     "gatsby-plugin",
