@@ -1,10 +1,10 @@
 'use strict';
 
-const globby = require('globby');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
 const pMap = require('p-map');
+const globby = require('globby');
 const isTextPath = require('is-text-path');
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
