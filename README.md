@@ -31,8 +31,8 @@ module.exports = {
     pathPrefix: '__GATSBY_IPFS_PATH_PREFIX__',
     plugins: [
         'gatsby-plugin-ipfs',
-    ]
-}
+    ],
+};
 ```
 
 And now, simply build the project with `npm run build -- --prefix-paths`. Better yet, set it by default in your `package.json`:
