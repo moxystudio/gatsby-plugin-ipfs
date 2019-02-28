@@ -1,6 +1,6 @@
 # gatsby-plugin-ipfs
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url] [![Greenkeeper badge][greenkeeper-image]][greenkeeper-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Dependency status][david-dm-image]][david-dm-url] [![Dev Dependency status][david-dm-dev-image]][david-dm-dev-url] 
 
 [npm-url]:https://npmjs.org/package/gatsby-plugin-ipfs
 [npm-image]:https://img.shields.io/npm/v/gatsby-plugin-ipfs.svg
@@ -9,8 +9,6 @@
 [david-dm-image]:https://img.shields.io/david/moxystudio/gatsby-plugin-ipfs.svg
 [david-dm-dev-url]:https://david-dm.org/moxystudio/gatsby-plugin-ipfs?type=dev
 [david-dm-dev-image]:https://img.shields.io/david/dev/moxystudio/gatsby-plugin-ipfs.svg
-[greenkeeper-image]:https://badges.greenkeeper.io/moxystudio/gatsby-plugin-ipfs.svg
-[greenkeeper-url]:https://greenkeeper.io
 
 Adds support for deploying [Gatsby](https://www.gatsbyjs.org/) websites to [IPFS](https://ipfs.io/) by ensuring that assets are relative.
 
