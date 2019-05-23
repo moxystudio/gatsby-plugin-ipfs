@@ -49,7 +49,20 @@ It turns out the Gatsby doesn't support relative paths. But I didn't gave up and
 - Adds a post-build step that iterates over files and transforms every `__GATSBY_IPFS_PATH_PREFIX__` occurrence
 - Adds a very small code snippet to every HTML page that defines the `__GATSBY_IPFS_PATH_PREFIX__` global based on the browser location
 
+## To Do List
 
+- [ ] Sitemap plugin for IPFS (assume pinning? and add __GATSBY_IPFS_PATH_PREFIX__ )
+- [ ] RSS Feed for IPFS (assume pinning? and add __GATSBY_IPFS_PATH_PREFIX__ )
+- [ ] Option to run IPFS add or pin to a provider
+- [ ] Improve handling of direct references to static assets. Workaround by adding __GATSBY_IPFS_PATH_PREFIX__  
+```
+render() {
+  // Note: this is an escape hatch and should be used sparingly!
+  // Normally we recommend using `import` for getting asset URLs
+  // as described in the “Importing Assets Directly Into Files” page.
+  return <img src={'__GATSBY_IPFS_PATH_PREFIX__/logo.png'} alt="Logo" />;
+}
+```
 ## License
 
 [MIT License](http://opensource.org/licenses/MIT)
