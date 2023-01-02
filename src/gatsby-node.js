@@ -32,6 +32,8 @@ const relativizeHtmlFiles = async () => {
             return;
         }
 
+        console.log("---- INSIDE relativizeHtmlFiles ----");
+
         const relativePrefix = getRelativePrefix(path);
 
         contents = contents
@@ -128,6 +130,7 @@ exports.onPreBootstrap = ({ store, reporter }) => {
 };
 
 exports.onPostBuild = async () => {
+    console.log("INSIDE gatsby plugin ipfs")
     // Relativize all occurrences of __GATSBY_IPFS_PATH_PREFIX__ within the built files
     await relativizeHtmlFiles();
     await relativizeJsFiles();
