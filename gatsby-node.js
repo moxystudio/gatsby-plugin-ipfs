@@ -32,8 +32,6 @@ const relativizeHtmlFiles = async () => {
             return;
         }
 
-        console.log('---- INSIDE relativizeHtmlFiles ----');
-
         const relativePrefix = getRelativePrefix(path);
 
         contents = contents
@@ -63,12 +61,11 @@ const relativizeJsFiles = async () => {
         // e.g.: return"__GATSBY_IPFS_PATH_PREFIX__/static/..." -> return __GATSBY_IPFS_PATH_PREFIX + "/static/..."
         contents = contents
         .replace(/["']\/__GATSBY_IPFS_PATH_PREFIX__['"]/g, () => ' __GATSBY_IPFS_PATH_PREFIX__ ')
-        .replace(/\/__GATSBY_IPFS_PATH_PREFIX__/g, () => ''); // Erases text of /__GATSBY_IPFS_PATH_PREFIX__, usually happens in filespaths
+        // Erases "/__GATSBY_IPFS_PATH_PREFIX__", usually found in filepaths
+        .replace(/\/__GATSBY_IPFS_PATH_PREFIX__/g, () => '');
 
-        // .replace(/(JSON.parse\(\s*)'([\w\W]*)'(\s*\))/g, (matches, g1, g2, g3) => `${g1}\`${g2}\`${g3}`
-        // .replace(/(?<!\\)(["'])\/__GATSBY_IPFS_PATH_PREFIX__\/([^'"]*?)(['"])/g, (matches, g1, g2, g3) => " ${__GATSBY_IPFS_PATH_PREFIX__} + " + `${g1}/${g2}${g3}`));
-
-        // prevents placement of header if all instances of __GATSBY_IPFS_PATH_PREFIX__ were removed in previous line
+        // prevents placement of header if all instances of
+        // __GATSBY_IPFS_PATH_PREFIX__ were removed in previous line
         if (contents.includes('__GATSBY_IPFS_PATH_PREFIX__')) {
             contents = `if(typeof __GATSBY_IPFS_PATH_PREFIX__ === 'undefined'){__GATSBY_IPFS_PATH_PREFIX__=''}${contents}`;
         }
@@ -136,7 +133,6 @@ exports.onPreBootstrap = ({ store, reporter }) => {
 };
 
 exports.onPostBuild = async () => {
-    console.log('INSIDE gatsby plugin ipfs');
     // Relativize all occurrences of __GATSBY_IPFS_PATH_PREFIX__ within the built files
     await relativizeHtmlFiles();
     await relativizeJsFiles();
