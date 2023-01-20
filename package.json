@@ -52,7 +52,7 @@
     "p-map": "^2.0.0"
   },
   "peerDependencies": {
-    "gatsby": "^4.0.0"
+    "gatsby": "^4.0.0 || ^5.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
