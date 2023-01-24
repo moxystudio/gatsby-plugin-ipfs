@@ -61,9 +61,14 @@ const relativizeJsFiles = async () => {
         // e.g.: return"__GATSBY_IPFS_PATH_PREFIX__/static/..." -> return __GATSBY_IPFS_PATH_PREFIX + "/static/..."
         contents = contents
         .replace(/["']\/__GATSBY_IPFS_PATH_PREFIX__['"]/g, () => ' __GATSBY_IPFS_PATH_PREFIX__ ')
-        .replace(/(["'])\/__GATSBY_IPFS_PATH_PREFIX__\/([^'"]*?)(['"])/g, (matches, g1, g2, g3) => ` __GATSBY_IPFS_PATH_PREFIX__ + ${g1}/${g2}${g3}`);
+        // Erases "/__GATSBY_IPFS_PATH_PREFIX__", usually found in filepaths
+        .replace(/\/__GATSBY_IPFS_PATH_PREFIX__/g, () => '');
 
-        contents = `if(typeof __GATSBY_IPFS_PATH_PREFIX__ === 'undefined'){__GATSBY_IPFS_PATH_PREFIX__=''}${contents}`;
+        // prevents placement of header if all instances of
+        // __GATSBY_IPFS_PATH_PREFIX__ were removed in previous line
+        if (contents.includes('__GATSBY_IPFS_PATH_PREFIX__')) {
+            contents = `if(typeof __GATSBY_IPFS_PATH_PREFIX__ === 'undefined'){__GATSBY_IPFS_PATH_PREFIX__=''}${contents}`;
+        }
 
         await writeFileAsync(path, contents);
     }, { concurrency: TRANSFORM_CONCURRENCY });
